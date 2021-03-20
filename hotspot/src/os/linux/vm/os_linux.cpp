@@ -103,6 +103,7 @@
 # include <sys/shm.h>
 #else
 # include <sys/syscall.h>
+#include <libgen.h>
 #endif
 # include <link.h>
 # include <stdint.h>
@@ -1802,7 +1803,7 @@ static int address_to_library_name_callback(struct dl_phdr_info *info,
   return 0;
 }
 #ifdef __ANDROID__
-const char* GetPathByFileName(char* targetFilename)
+const char* GetPathByFileName(const char* targetFilename)
 {
     FILE *fp = fopen("/proc/self/maps", "r");
     if (NULL == fp) {
@@ -1867,6 +1868,7 @@ bool os::dll_address_to_library_name(address addr, char* buf,
       }else{
         jio_snprintf(buf, buflen, "%s", GetPathByFileName(dlinfo.dli_fname));
       }
+      #endif
     }
     if (dlinfo.dli_fbase != NULL && offset != NULL) {
       *offset = addr - (address)dlinfo.dli_fbase;
