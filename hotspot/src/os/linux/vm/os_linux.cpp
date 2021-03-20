@@ -1802,7 +1802,7 @@ static int address_to_library_name_callback(struct dl_phdr_info *info,
   return 0;
 }
 #ifdef __ANDROID__
-char* GetPathByFileName(char* targetFilename)
+const char* GetPathByFileName(char* targetFilename)
 {
     FILE *fp = fopen("/proc/self/maps", "r");
     if (NULL == fp) {
@@ -1862,7 +1862,7 @@ bool os::dll_address_to_library_name(address addr, char* buf,
       //Nobody expects the Spanish Inquisition!
       //And nobody expects Android to properly locate the library with dli_fname, so do the check:
       //if the libname has slashes, it's the full path, HOVEWER if it doesn't then locate the path by checking /proc/self/maps
-      if (strrchr(di.dli_fname, '/') != NULL){
+      if (strrchr(dlinfo.dli_fname, '/') != NULL){
         jio_snprintf(buf, buflen, "%s", dlinfo.dli_fname);
       }else{
         jio_snprintf(buf, buflen, "%s", GetPathByFileName(dlinfo.dli_fname));
