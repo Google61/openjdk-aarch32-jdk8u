@@ -1816,9 +1816,10 @@ const char* GetPathByFileName(const char* targetFilename)
     while (fgets(buffer, BUFFER_SIZE, fp)) {
         if (sscanf(buffer, "%*llx-%*llx %*s %*s %*s %*s %s", path) == 1) {
             char *bname = basename(path);
-            printf("floc: check basename[%s]", bname);
+            //printf("floc: check basename[%s]", bname);
             if (strcasecmp(bname, targetFilename) == 0) {
                 fclose(fp);
+                printf("efloc: located %s at %s\n",targetFilename,path);
                 return path;
             }
         }
