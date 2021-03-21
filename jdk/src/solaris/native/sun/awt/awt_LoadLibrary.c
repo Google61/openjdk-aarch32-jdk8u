@@ -97,7 +97,6 @@ JNIEXPORT jboolean JNICALL AWTIsHeadless() {
 #endif
 static bool read_so_path_from_maps(const char* so_name, char* buf) {
   FILE *fp = fopen("/proc/self/maps", "r");
-  assert(fp, "Failed to open /proc/self/maps");
   if (!fp) {
     return false;
   }
