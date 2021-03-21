@@ -31,7 +31,7 @@
 #include <jni_util.h>
 #include <jvm.h>
 #include <stdbool.h>
-#incluse <assert.h>
+#include <assert.h>
 #include "gdefs.h"
 
 #include <sys/param.h>
