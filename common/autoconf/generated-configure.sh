@@ -4382,7 +4382,7 @@ VS_SDK_PLATFORM_NAME_2017=
 #CUSTOM_AUTOCONF_INCLUDE
 
 # Do not change or remove the following line, it is needed for consistency checks:
-DATE_WHEN_GENERATED=1596229451
+DATE_WHEN_GENERATED=1597148530
 
 ###############################################################################
 #
@@ -14001,8 +14001,8 @@ $as_echo "$COMPILE_TYPE" >&6; }
   elif test "x$OPENJDK_TARGET_OS" != xmacosx && test "x$OPENJDK_TARGET_CPU" = xx86_64; then
     # On all platforms except macosx, we replace x86_64 with amd64.
     OPENJDK_TARGET_CPU_OSARCH="amd64"
-  elif test "x$OPENJDK_TARGET_CPU" = xaarch32; then		
-     OPENJDK_TARGET_CPU_OSARCH="arm"		
+  elif test "x$OPENJDK_TARGET_CPU" = xaarch32; then
+    OPENJDK_TARGET_CPU_OSARCH="arm"
   fi
 
 
@@ -14633,10 +14633,10 @@ $as_echo "$with_jvm_variants" >&6; }
 
 
   INCLUDE_SA=true
-  if test "x$JVM_VARIANT_ZERO" = xtrue ; then
+  if test "x$JVM_VARIANT_ZERO" = xtrue; then
     INCLUDE_SA=false
   fi
-  if test "x$JVM_VARIANT_ZEROSHARK" = xtrue ; then
+  if test "x$JVM_VARIANT_ZEROSHARK" = xtrue; then
     INCLUDE_SA=false
   fi
   if test "x$OPENJDK_TARGET_CPU" = xaarch32; then
@@ -14645,8 +14645,8 @@ $as_echo "$with_jvm_variants" >&6; }
   if test "x$VAR_CPU" = xppc64 -o "x$VAR_CPU" = xppc64le ; then
     INCLUDE_SA=false
   fi
-  if test "x$OPENJDK_TARGET_CPU" = xaarch64; then		
-    INCLUDE_SA=false		
+  if test "x$OPENJDK_TARGET_CPU" = xaarch64; then
+    INCLUDE_SA=false
   fi
 
 
@@ -54200,3 +54200,4 @@ $CHMOD +x $OUTPUT_ROOT/compare.sh
     printf "consider using a supported version unless you know what you are doing.\n"
     printf "\n"
   fi
+
