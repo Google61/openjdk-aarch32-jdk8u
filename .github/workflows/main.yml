@@ -36,8 +36,8 @@ jobs:
           ndk-version: r10e
           add-to-path: false
       
-      - name: Add NDK to devkit & make toolchain
-        run: . ci_build_arch_${{matrix.arch}}.sh && echo "export NDK=$NDK_R10E">>./setdevkitpath.sh && ./maketoolchain.sh
+      - name: Add NDK to script & make toolchain
+        run: echo "export NDK=$NDK_R10E">>./ci_build_arch_${{matrix.arch}}.sh && . ci_build_arch_${{matrix.arch}}.sh && ./maketoolchain.sh
         env:
           NDK_R10E: ${{ steps.setup-ndk.outputs.ndk-path }}
       
