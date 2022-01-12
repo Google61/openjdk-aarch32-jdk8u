@@ -35,11 +35,17 @@ jobs:
         with:
           ndk-version: r10e
           add-to-path: false
-          
-      - name: Build with CI build script
-        run: bash "ci_build_arch_${{matrix.arch}}.sh"
+      
+      - name: Add NDK to devkit & make toolchain
+        run: . ci_build_arch_${{matrix.arch}}.sh && echo "export NDK=$NDK_R10E">>setdevkitpath.sh && ./maketoolchain
         env:
           NDK_R10E: ${{ steps.setup-ndk.outputs.ndk-path }}
+      
+      - name: Get & build external libraries
+        run: . ci_build_arch_${{matrix.arch}}.sh && ./getlibs.sh && ./buildlibs
+  
+      - name: Build JDK
+        run: . ci_build_arch_${{matrix.arch}}.sh && ./buildjdk.sh && ./removejdkdebuginfo.sh && ./tarjdk.sh
           
       - name: Upload JDK build output
         uses: actions/upload-artifact@v2
