@@ -38,6 +38,7 @@
 #include "utilities/elfStringTable.hpp"
 #include "utilities/elfSymbolTable.hpp"
 
+#include <linux/elf.h>
 
 ElfFile::ElfFile(const char* filepath) {
   assert(filepath, "null file path");
