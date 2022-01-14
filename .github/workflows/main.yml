@@ -40,6 +40,9 @@ jobs:
         run: echo "export NDK=$NDK_R10E">>./ci_build_arch_${{matrix.arch}}.sh && . ci_build_arch_${{matrix.arch}}.sh && ./maketoolchain.sh
         env:
           NDK_R10E: ${{ steps.setup-ndk.outputs.ndk-path }}
+    
+      - name: Build missing stuff
+        run: . ci_build_arch_${{matrix.arch}}.sh && ./api19.sh
       
       - name: Get & build external libraries
         run: . ci_build_arch_${{matrix.arch}}.sh && ./getlibs.sh && ./buildlibs.sh
