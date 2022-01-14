@@ -38,8 +38,6 @@
 #include "utilities/elfStringTable.hpp"
 #include "utilities/elfSymbolTable.hpp"
 
-#include <linux/elf.h>
-
 ElfFile::ElfFile(const char* filepath) {
   assert(filepath, "null file path");
   memset(&m_elfHdr, 0, sizeof(m_elfHdr));
@@ -253,13 +251,13 @@ bool ElfFile::specifies_noexecstack() {
         m_status = NullDecoder::file_invalid;
         return false;
       }
-      if (phdr.p_type == PT_GNU_STACK) {
-        if (phdr.p_flags == (PF_R | PF_W))  {
-          return true;
-        } else {
-          return false;
-        }
-      }
+//      if (phdr.p_type == PT_GNU_STACK) {
+//        if (phdr.p_flags == (PF_R | PF_W))  {
+//          return true;
+//        } else {
+//          return false;
+//        }
+//      }
     }
   }
 // AARCH64 defaults to noexecstack. All others default to execstack.
