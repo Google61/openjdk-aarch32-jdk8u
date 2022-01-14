@@ -42,7 +42,7 @@ jobs:
           NDK_R10E: ${{ steps.setup-ndk.outputs.ndk-path }}
     
       - name: Build missing stuff
-        run: . ci_build_arch_${{matrix.arch}}.sh && ./api19.sh
+        run: . ci_build_arch_${{matrix.arch}}.sh && sudo ./api19.sh
       
       - name: Get & build external libraries
         run: . ci_build_arch_${{matrix.arch}}.sh && ./getlibs.sh && ./buildlibs.sh
