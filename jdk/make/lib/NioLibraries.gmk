@@ -142,7 +142,7 @@ $(eval $(call SetupNativeCompilation,BUILD_LIBNIO, \
     MAPFILE := $(BUILD_LIBNIO_MAPFILE), \
     LDFLAGS := $(LDFLAGS_JDKLIB) $(BUILD_LIBNIO_LDFLAGS) \
         $(call SET_SHARED_LIBRARY_ORIGIN), \
-    LDFLAGS_SUFFIX_linux := -ljava -lnet -lpthread $(LIBDL), \
+    LDFLAGS_SUFFIX_linux := -ljava -lnet -lpthread $(LIBDL) -lapi19, \
     LDFLAGS_SUFFIX_aix := -ljava -lnet $(LIBDL),\
     LDFLAGS_SUFFIX_solaris := -ljvm -lsocket -lposix4 $(LIBDL) \
         -lsendfile -ljava -lnet -lc, \
